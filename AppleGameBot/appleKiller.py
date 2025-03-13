@@ -98,7 +98,7 @@ def arrange() :
     for i, row in enumerate(appleArray) :
         print(f"{row} [{len(row)}]")
     
-    return appleArray, posArray,     
+    return appleArray, posArray,
 
 def drag(x, y, dx, dy) :
     pyautogui.moveTo(x, y)
