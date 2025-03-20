@@ -1,8 +1,3 @@
-import random
-
-def generate_grid(rows=10, cols=17) :
-    return [[random.randint(1, 9) for _ in range(cols)] for _ in range(rows)]
-
 def dfs(i, j, path, current_sum, grid, rows, cols, directions) :
     if len(path) >= 2 and current_sum == 10 :
         return path
@@ -87,7 +82,7 @@ def print_grid(grid) :
             if (row[i] == -1) :
                 row[i] = 0
         print(" ".join(f"{val:2d}" for val in row))
-
+"""
 if __name__ == '__main__' :
     grid = generate_grid()
     print_grid(grid)
@@ -98,3 +93,4 @@ if __name__ == '__main__' :
 
     print("")
     print(f"{total_removals}")
+"""

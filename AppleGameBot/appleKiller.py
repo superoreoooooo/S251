@@ -15,8 +15,6 @@ width, height = 0, 0
 def load_and_preprocessing() :
     screenshot = pyautogui.screenshot(region=(startX, startY, 1035 - startX, 601 - startY)) #?
     screenshot.save("test.png")
-    img = np.array(screenshot)
-
     img = cv2.imread('test.png')
     img = cv2.resize(img, (img.shape[1] * sizeMultiplier, img.shape[0] * sizeMultiplier))
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -50,8 +48,7 @@ def ocr() :
         roi = img[y+2*sizeMultiplier:y+21*sizeMultiplier, x+4*sizeMultiplier:x+20*sizeMultiplier]
         gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
         _, gray = cv2.threshold(gray, 180, 255, cv2.THRESH_BINARY_INV)
-
-        cv2.imwrite('test_cut.png', gray)
+        #cv2.imwrite('test_cut.png', gray)
         
         config = "--psm 10 -c tessedit_char_whitelist=0123456789"
         text = pytesseract.image_to_string(gray, config=config)
@@ -94,10 +91,12 @@ def arrange() :
         digits_in_row = [v[2] for v in row_sorted] 
         appleArray.append(digits_in_row)
         posArray.append([(v[0], v[1]) for v in row_sorted])
-
+        
+    """
     for i, row in enumerate(appleArray) :
         print(f"{row} [{len(row)}]")
-    
+    """
+
     return appleArray, posArray,
 
 def drag(x, y, dx, dy) :
@@ -123,8 +122,6 @@ def execution() :
         dx, dy = dx + width / sizeMultiplier, dy + height / sizeMultiplier
         #print(x, y, dx, dy)
         drag(x, y, dx, dy)
-        
-    print(f"DONE!")
 
 if __name__ == '__main__' :
     contours, img = load_and_preprocessing()
