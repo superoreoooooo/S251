@@ -30,7 +30,7 @@ def run() :
     yVel = 0
     dt = 0 #delta time
 
-    player_pos = pygame.Vector2(screen.get_width() / 2, 0 )#screen.get_height() / 2)
+    player_pos = pygame.Vector2(screen.get_width() / 2, 0)#screen.get_height() / 2)
 
     def Jump(velocity) :
         velocity += 100 * dt
