@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import cv2
 import os
 
-#4
+# 4
 """
 print(os.getcwd())
 a = cv2.imread("ImageProcessing/images_chap4/read_gray.jpg", cv2.IMREAD_GRAYSCALE)
@@ -105,26 +105,101 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 """
 
+"""
 img = cv2.imread("ImageProcessing/images_chap5/bit_test.jpg", cv2.IMREAD_COLOR)
 logo = cv2.imread("ImageProcessing/images_chap5/logo.jpg", cv2.IMREAD_COLOR)
 
-masks = cv2.threshold(logo, 220, 255, cv2.THRESH_BINARY)[1]
-masks = cv2.split(masks)
+masks = cv2.threshold(logo, 220, 255, cv2.THRESH_BINARY)[1] # 임계값 이상인 픽셀만 255로 
+masks = cv2.split(masks) # 채널 분리
 
-fg_pass_mask = cv2.bitwise_or(masks[0], masks[1])
-fg_pass_mask = cv2.bitwise_or(masks[2], fg_pass_mask)
-bg_pass_mask = cv2.bitwise_not(fg_pass_mask)
+fg_pass_mask = cv2.bitwise_or(masks[0], masks[1]) # 0번이랑 1번채널 비교
+fg_pass_mask = cv2.bitwise_or(masks[2], fg_pass_mask) # 2번이랑 비교한 채널(0, 1번) 비교    (foreground 마스크) -> 로고 이미지 마스크
+# RGB 채널 모두 비교 후 마스크 생성
+bg_pass_mask = cv2.bitwise_not(fg_pass_mask) # not 연산으로 반전                         (background 마스크) -> 배경 이미지 마스크
 
 (H, W), (h, w) = img.shape[:2], logo.shape[:2]
 x, y = (W - w) // 2, (H - h) // 2
 roi = img[y : y + h, x : x + w]
 
-fg = cv2.bitwise_and(logo, logo, mask = fg_pass_mask)
-bg = cv2.bitwise_and(roi, roi, mask=bg_pass_mask)
+fg = cv2.bitwise_and(logo, logo, mask = fg_pass_mask) # 로고 이미지의 전경 (로고 부분)만 복사
+bg = cv2.bitwise_and(roi, roi, mask=bg_pass_mask) # 원본 roi의 배경만 복사
 
-dst = cv2.add(bg, fg)
-img[y : y + h, x : x + w] = dst
+dst = cv2.add(bg, fg) # 로고 전경 + 원본 배경 합성
+img[y : y + h, x : x + w] = dst # 원본 이미지에 적용
 
 cv2.imshow("a", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+"""
+
+"""
+img1 = cv2.imread("ImageProcessing/images_chap5/abs_test1.jpg", cv2.IMREAD_GRAYSCALE)
+img2 = cv2.imread("ImageProcessing/images_chap5/abs_test2.jpg", cv2.IMREAD_GRAYSCALE)
+
+difimg1 = cv2.subtract(img1, img2) # 차분
+difimg2 = cv2.subtract(np.int16(img1), np.int16(img2)) # signed int 로 차분
+absdif1 = np.absolute(difimg2).astype(np.uint8) # signed int -> unsigned int
+absdif2 = cv2.absdiff(img1, img2) # 절대값 차분
+
+titles = ['img1', 'img2', 'difimg1', 'absdif1', 'absdif2']
+for t in titles :
+    cv2.imshow(t, eval(t))
+cv2.waitKey(0)
+"""
+
+"""
+img = cv2.imread("ImageProcessing/images_chap5/minMax.jpg", cv2.IMREAD_GRAYSCALE)
+
+min_val, max_val, _, _ = cv2.minMaxLoc(img)
+
+ratio = 255 / (max_val - min_val)
+dst = np.round((img - min_val) * ratio).astype(np.uint8)
+min_val, max_val, _, _ = cv2.minMaxLoc(dst)
+
+print(min_val, max_val)
+
+cv2.imshow("img", img)
+cv2.imshow("dst", dst)
+cv2.waitKey(0)
+"""
+
+"""
+img = cv2.imread("ImageProcessing/images_chap5/sum_test.jpg", cv2.IMREAD_COLOR)
+
+sum = cv2.sumElems(img)
+mean = cv2.mean(img)
+mean, stdDev = cv2.meanStdDev(img)
+
+print(mean.flatten(), stdDev.flatten())
+
+img = cv2.split(img)
+img_b = cv2.sort(img[0], cv2.SORT_EVERY_ROW)
+img_g = cv2.sort(img[1], cv2.SORT_EVERY_COLUMN)
+img_r = cv2.sort(img[2], cv2.SORT_DESCENDING)
+
+img = cv2.merge([img_b, img_g, img_r])
+img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+cv2.imshow("A piece of modern art", img)
+cv2.waitKey(0)
+"""
+
+# 6
+"""
+img1 = cv2.imread("ImageProcessing/images_chap6/add1.jpg", cv2.IMREAD_GRAYSCALE)
+img2 = cv2.imread("ImageProcessing/images_chap6/add2.jpg", cv2.IMREAD_GRAYSCALE)
+
+alpha, beta = 0.6, 0.7
+
+addimg1 = cv2.add(img1, img2)
+addimg2 = cv2.add(img1 * alpha, img2 * beta)
+addimg2 = np.clip(addimg2, 0, 255).astype(np.uint8)
+addimg3 = cv2.addWeighted(img1, alpha, img2, beta, 0)
+
+titles = ['img1', 'img2', 'addimg1', 'addimg2', 'addimg3']
+for t in titles :
+    cv2.imshow(t, eval(t))
+    
+cv2.waitKey()
+
+"""

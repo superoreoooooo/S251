@@ -56,7 +56,7 @@ def solve_grid(grid) :
                             break
             if found_group:
                 break
-    return group_bboxes
+    return group_bboxes, grid
 
 def find_groups(grid) :
     rows, cols = len(grid), len(grid[0])

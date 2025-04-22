@@ -109,19 +109,21 @@ def drag(x, y, dx, dy) :
 def execution() :
     pyautogui.moveTo(startX, startY)
     pyautogui.leftClick()
-    bboxs = gridSolver.solve_grid(grid=appleArray)
-    for d in bboxs :
-        """
-        print(d[0][1]) # -> x pos   (0, 0) : (0, 0)
-        print(d[0][0]) # -> y pos   (0, 0) : (0, 0)
-        print(d[1][1]) # -> dx pos  (0, 1) : (1, 0)
-        print(d[1][0]) # -> dy pos  (0, 1) : (1, 0)
-        """
-        x, y = startX + posArray[d[0][0]][d[0][1]][0] / sizeMultiplier, startY + posArray[d[0][0]][d[0][1]][1] / sizeMultiplier
-        dx, dy = startX + posArray[d[1][0]][d[1][1]][0] / sizeMultiplier, startY + posArray[d[1][0]][d[1][1]][1] / sizeMultiplier
-        dx, dy = dx + width / sizeMultiplier, dy + height / sizeMultiplier
-        #print(x, y, dx, dy)
-        drag(x, y, dx, dy)
+    bboxs, grid = gridSolver.solve_grid(grid=appleArray)
+    while (len(bboxs) != 0) :
+        for d in bboxs :
+            """
+            print(d[0][1]) # -> x pos   (0, 0) : (0, 0)
+            print(d[0][0]) # -> y pos   (0, 0) : (0, 0)
+            print(d[1][1]) # -> dx pos  (0, 1) : (1, 0)
+            print(d[1][0]) # -> dy pos  (0, 1) : (1, 0)
+            """
+            x, y = startX + posArray[d[0][0]][d[0][1]][0] / sizeMultiplier, startY + posArray[d[0][0]][d[0][1]][1] / sizeMultiplier
+            dx, dy = startX + posArray[d[1][0]][d[1][1]][0] / sizeMultiplier, startY + posArray[d[1][0]][d[1][1]][1] / sizeMultiplier
+            dx, dy = dx + width / sizeMultiplier, dy + height / sizeMultiplier
+            #print(x, y, dx, dy)
+            drag(x, y, dx, dy)
+        bboxs, grid = gridSolver.solve_grid(grid=grid)
 
 if __name__ == '__main__' :
     contours, img = load_and_preprocessing()
