@@ -1,0 +1,15 @@
+/Users/minseohong/S251/windowsProgramming/p0502/bin/Debug/net8.0/p0502
+/Users/minseohong/S251/windowsProgramming/p0502/bin/Debug/net8.0/p0502.deps.json
+/Users/minseohong/S251/windowsProgramming/p0502/bin/Debug/net8.0/p0502.runtimeconfig.json
+/Users/minseohong/S251/windowsProgramming/p0502/bin/Debug/net8.0/p0502.dll
+/Users/minseohong/S251/windowsProgramming/p0502/bin/Debug/net8.0/p0502.pdb
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.GeneratedMSBuildEditorConfig.editorconfig
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.AssemblyInfoInputs.cache
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.AssemblyInfo.cs
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.csproj.CoreCompileInputs.cache
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.sourcelink.json
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.dll
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/refint/p0502.dll
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.pdb
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/p0502.genruntimeconfig.cache
+/Users/minseohong/S251/windowsProgramming/p0502/obj/Debug/net8.0/ref/p0502.dll
