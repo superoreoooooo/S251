@@ -64,7 +64,6 @@ w = world(5, 2, 3)
 while True :
     w.printGrid()
     mvmt = input("이동(동/서/남/북) : ")
-    
     reward = w.movePlayer(mvmt)
     
     if (reward == 0) :
