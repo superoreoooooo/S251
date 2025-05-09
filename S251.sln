@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windowsProgramming", "windo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p0502", "windowsProgramming\p0502\p0502.csproj", "{13E7CB95-730B-4C87-92E2-60B4CE999CA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p0509", "windowsProgramming\p0509\p0509.csproj", "{859D3C24-3E9E-4476-9EF1-33BF8B97118A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{13E7CB95-730B-4C87-92E2-60B4CE999CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13E7CB95-730B-4C87-92E2-60B4CE999CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13E7CB95-730B-4C87-92E2-60B4CE999CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859D3C24-3E9E-4476-9EF1-33BF8B97118A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859D3C24-3E9E-4476-9EF1-33BF8B97118A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859D3C24-3E9E-4476-9EF1-33BF8B97118A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859D3C24-3E9E-4476-9EF1-33BF8B97118A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +41,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{13E7CB95-730B-4C87-92E2-60B4CE999CA3} = {F1A34209-1C6C-4C60-8805-777060240977}
+		{859D3C24-3E9E-4476-9EF1-33BF8B97118A} = {F1A34209-1C6C-4C60-8805-777060240977}
 	EndGlobalSection
 EndGlobal
