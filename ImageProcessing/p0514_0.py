@@ -30,9 +30,17 @@ spec2 = fftshift(spec1)
 idft = idft2(dft).real
 ck_time(1)
 
+ck_time(0)
+fft = np.fft.fft2(img)
+spec3 = calc_spectrum(fft)
+spec4 = fftshift(spec2)
+ck_time(1)
+
 cv2.imshow("img", img)
 cv2.imshow("spec1", spec1)
 cv2.imshow("spec2", spec2)
+cv2.imshow("spec3", spec3)
+cv2.imshow("spec4", spec4)
 cv2.imshow("idft img", cv2.convertScaleAbs(idft))
 
 cv2.waitKey(0)
