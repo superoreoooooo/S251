@@ -18,6 +18,7 @@ def question(q, cnt) :
     
     if (q == input()) :
         print("통과!")
+        # print(f"T NOW : {(time.time() - start):.2f}초")
         return True
     else :
         print("오타!")
@@ -25,6 +26,7 @@ def question(q, cnt) :
 
 for i in range(0, 5, 1) :
     q = random.choice(words)
+    words.remove(q)
     
     if (question(q, i) == True) :
         continue
