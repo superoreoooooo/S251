@@ -10,20 +10,18 @@ class mazeWorld :
         self.setObj('P', 1)
         
     def setObj(self, type, count) :
-        genCnt = 0
         for _ in range(0, count, 1) :
             pick = random.randint(0, len(self.grid)**2 - 1)
+            
             if (self.grid[pick//5][pick%5] == '.') :
                 self.grid[pick//5][pick%5] = type
-                if (type == 'P') :
-                    self.playerPos = (pick//5, pick%5)
-                genCnt += 1
+                if (type == 'P') : self.playerPos = (pick//5, pick%5)
             else :
-                self.setObj(type, count - genCnt)
+                self.setObj(type, count - sum([row.count(type) for row in self.grid]))
     
     def printGrid(self) :
         for i in range(0, len(self.grid), 1) :
-            for j in range(0, len(self.grid[i]), 1) :
+            for j in range(0, len(self.grid[i]),   1) :
                 print(f"{self.grid[i][j]} ", end='')
             print('')
             
@@ -55,7 +53,11 @@ class mazeWorld :
 
 if (__name__ == "__main__") :
     w = mazeWorld(5, 2, 3)
-
+    
+    for i in range(0, 100, 1) :
+        w = mazeWorld(5, 2, 3)
+        print(f"{i} | X {sum([row.count('X') for row in w.grid])} T {sum([row.count('T') for row in w.grid])} P {sum([row.count('P') for row in w.grid])}")
+    """
     while True :
         w.printGrid()
         mvmt = input("이동(동/서/남/북) : ")
@@ -68,3 +70,5 @@ if (__name__ == "__main__") :
         if (status == 2) :
             w = mazeWorld(5, 2, 3)
             continue
+            
+    """
