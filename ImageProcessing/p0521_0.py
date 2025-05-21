@@ -41,9 +41,8 @@ def onCornerHarris(thresh) :
     dst = cv2.repeat(img1, 1, 2)
     dst[:, img1.shape[1]:, :] = img2
     cv2.imshow("harris", dst)
-    
-img = cv2.imread("ImageProcessing/images_chap9/fft_300.jpg", cv2.IMREAD_COLOR)
 
+img = cv2.imread("ImageProcessing/images_chap9/fft_300.jpg", cv2.IMREAD_COLOR)
 
 blocksize = 4
 apSize = 3
