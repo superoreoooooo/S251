@@ -27,6 +27,6 @@ colors = ['black', "white"]
 for i in range(2000) :
     t.pencolor(colors[i % len(colors)])
     t.forward(i)
-    t.left(60)
+    t.left(80)
 
 turtle.done()
